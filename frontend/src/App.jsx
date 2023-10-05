@@ -4,7 +4,9 @@ import ThemeProvider from "./theme";
 function App() {
   return (
     <>
-      App
+      <ThemeProvider>
+        <Router />
+      </ThemeProvider>
     </>
   );
 }
