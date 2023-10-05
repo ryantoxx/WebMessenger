@@ -1,9 +1,8 @@
-# Frontend - Web Messenger
+# React + Vite
 
-This folder contains the frontend code for the web messenger application.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Technologies Used
+Currently, two official plugins are available:
 
-- **React**: The frontend is built using the React library for building user interfaces.
-- **Vite**: Vite is used as the build tool and development server for the frontend.
-- **JavaScript**: JavaScript is used as the primary programming language for the frontend logic.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
