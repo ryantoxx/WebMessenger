@@ -2,6 +2,8 @@ package com.utm.messenger.user;
 
 import com.utm.messenger.exception.UserAlreadyExistsException;
 import com.utm.messenger.registration.RegistrationRequest;
+import com.utm.messenger.registration.token.VerificationToken;
+import com.utm.messenger.registration.token.VerificationTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ public class UserService implements  IUserService{
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final VerificationTokenRepository tokenRepository;
     @Override
     public List<User> getUsers() {
         return userRepository.findAll();
@@ -37,5 +40,12 @@ public class UserService implements  IUserService{
     @Override
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public void saveUserVerificationToken(User theUser, String token) {
+        var verficationToken = new VerificationToken(token, theUser);
+        tokenRepository.save(verficationToken);
+
     }
 }

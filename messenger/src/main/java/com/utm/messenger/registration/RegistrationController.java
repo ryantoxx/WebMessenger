@@ -1,6 +1,10 @@
 package com.utm.messenger.registration;
 
 import com.utm.messenger.event.RegistrationCompleteEvent;
+import com.utm.messenger.exception.UserAlreadyExistsException;
+import com.utm.messenger.user.User;
+
+import com.utm.messenger.event.RegistrationCompleteEvent;
 import com.utm.messenger.user.User;
 import com.utm.messenger.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,6 +30,8 @@ public class RegistrationController {
         publisher.publishEvent(new RegistrationCompleteEvent(user, applicationUrl(request)));
         return "Successful. Check your email to complete your registration";
     }
+
+
 
     public String applicationUrl(HttpServletRequest request) {
         return "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
