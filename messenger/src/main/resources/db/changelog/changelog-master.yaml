@@ -1,0 +1,3 @@
+#databaseChangeLog:
+#  -include:
+#     file: <path/to/file/from/src/>
