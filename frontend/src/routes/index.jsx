@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 
+
 // layouts
 import DashboardLayout from "../layouts/dashboard";
 import MainLayout from "../layouts/main";
@@ -26,12 +27,15 @@ export default function Router() {
         {
           element: <LoginPage />,
           path: "login"
-        }
-        // ,
-        // {
-        //   element: <RegisterPage />,
-        //   path: "register"
-        // }
+        },
+        {
+          element: <RegisterPage />,
+          path: "register"
+        },
+        { path: "reset-password", 
+          element: <ResetPasswordPage /> },
+          { path: "new-password", 
+          element: <NewPasswordPage /> },
       ],
     },
     {
@@ -50,6 +54,10 @@ export default function Router() {
 }
 
 const LoginPage = Loadable(lazy(() => import("../pages/auth/Login")));
+const RegisterPage = Loadable(lazy(() => import("../pages/auth/Register")));
+const ResetPasswordPage = Loadable(lazy(() => import("../pages/auth/ResetPassword")));
+const NewPasswordPage = Loadable(lazy(() => import("../pages/auth/NewPassword")));
+
 const GeneralApp = Loadable(
   lazy(() => import("../pages/dashboard/GeneralApp"))
 );

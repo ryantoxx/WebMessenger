@@ -82,6 +82,7 @@ const typography = {
     lineHeight: 24 / 14,
     fontSize: pxToRem(14),
     textTransform: 'capitalize',
+
   },
   article: {
     fontWeight: 700,
