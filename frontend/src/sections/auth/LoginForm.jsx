@@ -7,7 +7,7 @@ import { Button, IconButton, InputAdornment, Link, Stack } from "@mui/material";
 import { RHFTextField } from "../../components/hook-form";
 import { Eye, EyeSlash } from "phosphor-react";
 
-const LoginForm = () => {
+function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   // @hookform/resolver - can set min/max length for password
@@ -17,10 +17,12 @@ const LoginForm = () => {
       .email("Email must be a valid email address"),
     password: Yup.string().required("Password is required"),
   });
+
   const defaultValues = {
     email: "demo@chat.com",
     password: "demo1234",
   };
+
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues,
@@ -30,7 +32,7 @@ const LoginForm = () => {
     reset,
     setError,
     handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors },
   } = methods;
 
   const onSubmit = async (data) => {
@@ -50,17 +52,20 @@ const LoginForm = () => {
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
         {!!errors.afterSubmit && (
-          <Alert saverity="error">{errors.afterSubmit.message}</Alert>
+          <Alert severity="error">{errors.afterSubmit.message}</Alert>
         )}
 
-        <RHFTextField name="email" label={"Email Adress"} />
+        <RHFTextField 
+          name="email" 
+          label={"Email Adress"}
+        />
         <RHFTextField
           name="password"
           label={"Password"}
           type={showPassword ? "text" : "password"}
           InputProps={{
             endAdornment: (
-              <InputAdornment>
+              <InputAdornment position="end">
                 <IconButton
                   onClick={() => {
                     setShowPassword(!showPassword);
@@ -85,9 +90,9 @@ const LoginForm = () => {
         type="submit"
         variant="contained"
         sx={{
-          bgcolor: "text.primary",
-          color: "common.white",
-          "&hover": { bgcolor: "text.primary", color: "common.white" },
+          bgcolor: "rgba(119, 151, 227, 1)",
+          color: "white",
+          "&:hover": { bgcolor: "common.white", color: "rgba(119, 151, 227, 1)"},
         }}
       >
         Login
