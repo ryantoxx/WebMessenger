@@ -2,10 +2,12 @@ import React from "react";
 
 import { FormProvider as Form } from "react-hook-form";
 
-const FormProvider = ({ children, onSubmit, methods }) => {
+
+
+function FormProvider({ children, onSubmit, methods }) {
   return (
     <Form {...methods}>
-      <form onSumbit={onSubmit}>{children}</form>
+      <form onSubmit={onSubmit}>{children}</form>
     </Form>
   );
 };
