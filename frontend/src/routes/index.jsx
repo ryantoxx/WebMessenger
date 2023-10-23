@@ -1,7 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 
-
 // layouts
 import DashboardLayout from "../layouts/dashboard";
 import MainLayout from "../layouts/main";
@@ -26,16 +25,15 @@ export default function Router() {
       children: [
         {
           element: <LoginPage />,
-          path: "login"
+          path: "login",
         },
         {
           element: <RegisterPage />,
-          path: "register"
+          path: "register",
         },
-        { path: "reset-password", 
-          element: <ResetPasswordPage /> },
-          { path: "new-password", 
-          element: <NewPasswordPage /> },
+        { path: "reset-password", element: <ResetPasswordPage /> },
+        { path: "new-password", element: <NewPasswordPage /> },
+        { path: "confirmed-account", element: <ConfirmedPage /> },
       ],
     },
     {
@@ -55,8 +53,15 @@ export default function Router() {
 
 const LoginPage = Loadable(lazy(() => import("../pages/auth/Login")));
 const RegisterPage = Loadable(lazy(() => import("../pages/auth/Register")));
-const ResetPasswordPage = Loadable(lazy(() => import("../pages/auth/ResetPassword")));
-const NewPasswordPage = Loadable(lazy(() => import("../pages/auth/NewPassword")));
+const ResetPasswordPage = Loadable(
+  lazy(() => import("../pages/auth/ResetPassword"))
+);
+const NewPasswordPage = Loadable(
+  lazy(() => import("../pages/auth/NewPassword"))
+);
+const ConfirmedPage = Loadable(
+  lazy(() => import("../pages/auth/ConfirmedPage"))
+);
 
 const GeneralApp = Loadable(
   lazy(() => import("../pages/dashboard/GeneralApp"))

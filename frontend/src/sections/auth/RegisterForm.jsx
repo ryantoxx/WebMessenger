@@ -13,9 +13,8 @@ const RegisterForm = () => {
 
   // @hookform/resolver - can set min/max length for password
   const RegisterSchema = Yup.object().shape({
-    firstName: Yup.string().required("First Name is required"),
-    lastName: Yup.string().required("Last Name is required"),
-    gender: Yup.string().oneOf(["male", "female", "other"]).required("Gender is required."),
+    // firstName: Yup.string().required("First Name is required"),
+    // lastName: Yup.string().required("Last Name is required"),
     phoneNumber: Yup.number().required("Phone number is required."),
     email: Yup.string()
       .required("Email is required")
@@ -30,7 +29,6 @@ const RegisterForm = () => {
     email: "",
     password: "",
     confirm_password:"",
-    gender: "male",
   };
 
   const methods = useForm({
@@ -63,12 +61,12 @@ const RegisterForm = () => {
         {!!errors.afterSubmit && (
           <Alert severity="error">{errors.afterSubmit.message}</Alert>
         )}
-        <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+        {/* <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
           <RHFTextField name="firstName" label="First Name" />
           <RHFTextField name="lastName" label="Last Name" />
-        </Stack>
+        </Stack> */}
         <RHFTextField name="email" label="Email Address" />
-        <RHFTextField name="password" label="Password" type={showPassword ? "text" : "password"}
+        {/* <RHFTextField name="password" label="Password" type={showPassword ? "text" : "password"}
           InputProps={{
             endAdornment: (
               <InputAdornment>
@@ -95,7 +93,7 @@ const RegisterForm = () => {
                 </IconButton>
               </InputAdornment>
             ),
-          }}/>
+          }}/> */}
 
         <Button
                 fullWidth
